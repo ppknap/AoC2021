@@ -1,9 +1,13 @@
-data = map(x->parse(Int64, x), readlines("Day01.csv"));
+data = map(x -> parse(Int64, x), readlines("Day01.csv"));
+
+countdecreased =
+    (offset) ->
+        count(map(((i, v),) -> (i > offset && v - data[i-offset] > 0), enumerate(data)));
 
 # Part 1
-ans = count(map(x->(x[1] > 1 && x[2] - data[x[1]-1] > 0), enumerate(data)));
+ans = countdecreased(1);
 println("Part 1: $ans")
 
 # Part 2
-ans = count(map(x->(x[1] > 3 && x[2] - data[x[1]-3] > 0), enumerate(data)));
+ans = countdecreased(3);
 println("Part 2: $ans")
