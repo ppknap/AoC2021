@@ -2,7 +2,7 @@ data = map(
     x -> (toks = split(x, " ");
     (name, v) = (toks[1], parse(Int64, toks[2]));
     ((name == "up") * v, (name == "down") * v, (name == "forward") * v)),
-    readlines("Day02.csv"),
+    readlines("Day02.input"),
 );
 
 # Part 1
