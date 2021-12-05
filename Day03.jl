@@ -1,3 +1,4 @@
+# Input data
 data = BitArray(
     hcat(
         map(

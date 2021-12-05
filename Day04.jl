@@ -1,3 +1,4 @@
+# Input data
 data = readlines("Day04.input");
 steps = map(v -> parse(Int64, v), split(data[1], ","));
 boards = map(

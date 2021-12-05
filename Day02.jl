@@ -1,3 +1,4 @@
+# Input data
 data = map(
     x -> (toks = split(x, " ");
     (name, v) = (toks[1], parse(Int64, toks[2]));
