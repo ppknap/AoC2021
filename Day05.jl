@@ -11,18 +11,17 @@ data = map(
 
 # Part 1
 allpoints =
-    (line) -> (
-        mincoord = min.(line[1], line[2]);
-        maxcoord = max.(line[1], line[2]);
-        filter(
-            p -> (norm(line[1] .- p) + norm(line[2] .- p) ≈ norm(line[1] .- line[2])),
-            vec(
-                collect(
-                    Iterators.product(mincoord[1]:maxcoord[1], mincoord[2]:maxcoord[2]),
+    (line) -> (filter(
+        p -> (norm(line[1] .- p) + norm(line[2] .- p) ≈ norm(line[1] .- line[2])),
+        vec(
+            collect(
+                Iterators.product(
+                    range(extrema(first.(line))...),
+                    range(extrema(last.(line))...),
                 ),
             ),
-        )
-    );
+        ),
+    ));
 
 getans = (data) -> count(>(1), values(countmap(Iterators.flatten(map(allpoints, data)))));
 
